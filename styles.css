@@ -1,0 +1,87 @@
+@import
+    url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
+
+:root{
+--bs-nav-bg: rgb(142, 162, 172);
+}
+
+body{
+font-family: 'Cormorant Garamond', serif;
+font-size: 100%;
+margin:0;
+}
+.container-fluid{
+--bs-gutter-x:0;
+--data-bs-interval:15000;
+}
+
+
+  .hero{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  }
+
+  .herotext{
+      color: rgb(255,255,255);
+      font-size:12vw;
+  }
+
+  .h1{font-size: 4vw;
+  text-align: center;
+  }
+
+  .nav-link{font-size: 1.5em;}
+ .navbar{
+  background-color: var(--bs-nav-bg);
+  }
+
+ .Cancelled {
+  background-color: rgb(255, 221, 208);
+  border-left: 4px solid rgb(244, 67, 54);
+  padding-left: 5px;
+}
+
+
+.Congrats {
+  background-color: rgb(255, 245, 208);
+  border-left: 4px solid rgb(244, 162, 54);
+  padding-left: 5px;
+
+}
+
+.hi {
+  background-color: rgb(242, 255, 208);
+  border-left: 4px solid rgb(231, 244, 54);
+  padding-left: 5px;
+}
+
+
+.hello {
+  background-color: rgb(219, 255, 208);
+  border-left: 4px solid rgb(136, 244, 54);
+  padding-left: 5px;
+
+}
+
+.bye {
+  background-color: rgb(208, 255, 221);
+  border-left: 4px solid rgb(54, 244, 67);
+  padding-left: 5px;
+}
+
+.my {
+  background-color: rgb(208, 255, 245);
+  border-left: 4px solid rgb(54, 244, 162);
+  padding-left: 5px;
+
+}
+
+.noticesp{
+font-size: 1.5vw;}
+
+.container {
+	max-width: 80em;
+	margin: 0 auto;
+}
