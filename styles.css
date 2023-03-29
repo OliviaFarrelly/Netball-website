@@ -12,7 +12,7 @@
 body{
 font-family: 'Cormorant Garamond', serif;
 font-size: 100%;
-margin:0;
+margin:4.5em 0 0 0;
 background-color: var(--bs-background-bg);
 }
 .container-fluid{
@@ -20,10 +20,35 @@ background-color: var(--bs-background-bg);
 --data-bs-interval:15000;
 }
 
-.p{text-align: center;}
+.hr-title {
+    background-color: var(--bs-background-bg);
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0 30px;
+    letter-spacing: 1px;
+}
 
-.h3{text-align: center;}
+.hr {
+    display: block;
+    margin-top: 3em ;
+    margin-bottom: 1em;
+    border-top: 3px solid rgb(0,0,0);
+    text-align: center;
+    line-height: 1px;
+ }
 
+
+.h2{text-align: center;}
+
+h3{text-align: center;
+    padding-bottom: 1px;
+}
+
+.subheading{
+    text-align: center;
+    background-color: rgb(255,255,255);
+    font-size: 22px;
+}
 
   .hero{
   position:absolute;
@@ -42,13 +67,16 @@ background-color: var(--bs-background-bg);
   text-align: center;
   }
 
-  .nav-link{font-size: 1.5em;}
+  /* Styling for my Navbar */
+  .nav-link{font-size: 1.5em;
+  }
+
  .navbar{
   background-color: var(--bs-nav-bg);
   padding-left: 5px;
   }
 
-
+/* Styling for my notices */
 .Cancelled {
   background-color: rgb(211, 220, 222);
   border-left: 4px solid rgb(168, 186, 189);
@@ -63,14 +91,14 @@ background-color: var(--bs-background-bg);
 }
 
 
-.hi {
+.training {
   background-color: rgb(182, 197, 200);
   border-left: 4px solid rgb(139, 163, 167);
   padding-left: 5px;
 
 }
 
-.hello {
+.game {
   background-color: rgb(168, 186, 189);
   border-left: 4px solid rgb(124, 151, 156);
   padding-left: 5px;
@@ -91,10 +119,12 @@ background-color: var(--bs-background-bg);
 
 .noticesp{font-size: 1.2em}
 
+/* conatiner to box in my page */
 .container {
 	max-width: 80em;
 	margin: 0 auto;
 }
+/* Columns */
 
 .col-sm-8{
     background-color: rgb(255,255,255);
@@ -106,7 +136,7 @@ background-color: var(--bs-background-bg);
 }
 .col-sm-6{
      background-color: rgb(255,255,255);
-    padding:0;}
+    padding:0 0 0em 0;}
 
 .col-sm-10{
      background-color: rgb(255,255,255);
@@ -114,20 +144,45 @@ background-color: var(--bs-background-bg);
 
 .col-sm-2{
      background-color: rgb(255,255,255);
-    padding: 5px;
+    padding: 0;
     }
+
+/* Styling for texts for my differnt columns */
 
 .ptext{
     text-align: center;
+    font-size: 1.05em;
     background-color: rgb(255,255,255);
     padding: 5px;
 }
 
+.p{text-align: center;
+    font-size: 1.05em;
+    padding: 5px;}
+
 .pheader{
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
+    padding: 0.8em 0 0 0;
 }
 
+/* Styling for my image */
+.img{padding-left: 3.8em;
+    padding-top: 0.1em}
+
+/* Styling for my image overlay */
+.card-text{padding-left: 6em;
+font-size: 1.3em;}
+
+.card-end{padding-left: 30em;
+font-size: 1.3em;}
+
+.card-title{font-size: 3em;}
+
+.card-img{filter: blur(3px);
+ }
+
+/* Styling for my footer */
 footer{
     background-color: var(--bs-nav-bg);
     text-align: center;
