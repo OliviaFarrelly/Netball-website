@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block logo %}
+static/images/logo.jpg
+{% endblock %}
+
+{% block content %}
+<!-- Gallery -->
+
+<div class="container-fluid position-relative">
+
+
+    <div id="netballgallery" class="carousel slide" data-bs-ride="carousel">
+        <!-- Changing the photos -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#netballgallery" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#netballgallery" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#netballgallery" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#netballgallery" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#netballgallery" data-bs-slide-to="4" aria-label="Slide 5"></button>
+  </div>
+
+        <!-- My five differnt photos  -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="static/images/img1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/img2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/img3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/img4.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="static/images/img5.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#netballgallery" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#netballgallery" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!--Text for middle of gallery -->
+  <div class="hero">
+    <h1 class="herotext">Hot Shots</h1>
+  </div>
+</div>
+
+<!--Title for next section of the page -->
+<div class='hr'>
+    <span class='hr-title'>About Us</span>
+  </div>
+
+
+<br>
+<!-- creating columns -->
+<div class = "container">
+<div class = "row">
+    <div class = "col-sm-7" >
+        <div>
+        <p class="pheader">Hot Shots is a new squad it has been created more recently. People around the wellington region get
+    together to created teams to compete throughout the wellington netball season. It has been started by coach Dave Farrelly.
+       <!-- Adding images -->
+        </p>
+            </div>
+        <div class="text-center">
+        <img class="img-fluid" src = "static/images/Team.jpg" alt = "team">
+            </div>
+
+    </div>
+   <div class = "col-sm-5" >
+       <!-- Adding little columns -->
+     <h2 class="h2"><b>Notices</b></h2>
+<div class="Cancelled">
+  <p class="noticesp"><strong>Cancelled!</strong>
+    <br> All netball games played outside are cancelled due to rain</p>
+</div>
+
+    <div class="Congrats">
+  <p class="noticesp"><strong>Congrats!</strong>
+ <br>Congratulations to our senior teams who all won their games </p>
+</div>
+
+<div class="Training">
+  <p class="noticesp"><strong>Training!</strong>
+   <br>Training cancelled on Thursday, due to coach being sick</p>
+</div>
+
+<div class="game">
+  <p class="noticesp"><strong>Draw!</strong>
+    <br>Keep an eye out for the game draw</p>
+</div>
+
+<div class="bye">
+<p class="noticesp"><strong>!</strong>
+  <br> ------------- Some text...</p>
+</div>
+
+<div class="my">
+<p class="noticesp"><strong>!</strong>
+  <br> ------------- Some text...</p>
+</div>
+   </div>
+   </div>
+
+  <br>
+</div>
+
+<!-- Adding more columns -->
+<div class = "container bg-white">
+<div class = "row">
+   <div class = "col-sm-6"><img class="img-fluid" src = "static/images/team1.jpg" alt = "Team Photo"></div>
+   <div class = "col-sm-6" ><img class="img-fluid" src = "static/images/team2.jpg" alt = "team"></div>
+  <p class="ptext"><i class="subheading">Netball is an important sport and its played widely around new zealand. It's A strategic game and
+    can be for anyone who's interested.</i> <br><br>The squad was created to give people a chance who don't have
+    opportunities to play in school but want to get into the game of netball. It's a fun game. In this
+    squad you will learn all the tips and tricks to use in games in netball. It is a competitive game
+    but the competition i shweta makes the game fun. Netball is a tema sport and helps to grow your
+    social skills as wells as help your cardio. Being a team sport this allows you to interact not only
+    with your own team members but other people throughout the wellington region. It helps to provide you
+    with a wide range of friends and helps you gain more social confidence.</p>
+   </div>
+</div>
+
+<!-- Adding in an image with overlay -->
+<div class="container">
+  <div class="card bg-light text-white">
+  <img src="static/images/quote.jpg" class="card-img" alt="...">
+  <div class="card-img-overlay">
+      <!-- Adding words ontop of image -->
+    <h5 class="card-title">Quote</h5>
+    <p class="card-text"><b>Practice</b>
+        <br>  --------- Like You've<br>
+              --------------------- Never Won <br><b>
+              ---------------------------------- Preform</b> <br>
+              -------------------------------------------- Like You've<br>
+              --------------------------------------------------------- Never Lost
+    <p class="card-end"> -- Anonymous </p>
+  </div>
+</div>
+</div>
+
+    <br>
+
+<!-- more columns -->
+<div class = "container bg-white">
+  <div class = "row align-items-center">
+      <div class = "col-sm-8">
+        <br>
+          <!-- Title -->
+        <h3 class="h3"><b>About The Coach</b></h3>
+<!-- Subheading text -->
+        <p class="subheading"><i> Dave Farrelly. He has been a  netball coach for 12 years. </i></p>
+
+          <p class="p"> Coaching different ages and levels of netball.
+              He enjoys helping people grow their netball skills and learn new ways to approach netball games. He enjoys
+              watching people grow and improve their skills. </p> <p class="p"> He likes to coach  people from age 10+. He coaches some teams
+              but also trains people individually to improve their own skills for their own netball teams. Dave is open to
+             training people at all levels. He wants to help people who will play for his teams but also help the community by
+             providing private lessons for girls who need a little more practice to help them reach their best potential.</p><p class="p">
+             He is very friendly and wants to create a good social aspect with his team because the more tight your team is
+             the better they play. Dave is here to help teach you and your children to become the netball players they want to be.</p>
+      </div>
+      <!--Adding images in the column -->
+    <div class = "col-sm-4" ><img class="img-fluid" src = "static/images/dave.jpg" alt = "ABOUT THE COACH"></div>
+    </div>
+</div>
+
+{% endblock %}
