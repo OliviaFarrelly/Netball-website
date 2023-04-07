@@ -177,11 +177,13 @@ h3{text-align: center;
     padding: 0.8em 0 0 0;
 }
 
-.row{background-color: white;
+.backing{background-color: white;
 }
 
+.top{margin-top: 7em;
+margin-bottom: 5em;}
 
-
+.labels{font-weight: bold;}
 /* Styling for my image overlay */
 .card-text{padding-left: 6em;
 font-size: 1.3vw;
@@ -195,6 +197,9 @@ font-size: 1.3vw;}
 .card-img{filter: blur(2px);
  }
 
+.border{
+    background-color: var(--bs-background-bg);
+}
 /* Styling for my Form */
 
 label, input[type='text'], input[type='email'], input[type='number'], textarea{
@@ -266,5 +271,21 @@ footer{
 
 
 
+@media only screen and (max-width: 768px){
+
+    .body-text, .quote{
+        font-size: 1.5em;
+    }
+    h1{
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 576px){
+
+    .part-img{
+        max-width: 100%;
+    }
+}
 
 
