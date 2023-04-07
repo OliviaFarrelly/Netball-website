@@ -9,5 +9,52 @@ static/images/logo.jpg
 {% endblock %}
 
 {% block content %}
-register form
+
+
+<p class="header-text">
+    <u>Join the team today</u>
+</p>
+
+<div class="container-lg p-3">
+    <form action="/register" method="POST">
+        <div>
+          <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="" value="{{firstname}}" required>
+        </div>
+
+        <div>
+          <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="" value="{{lastname}}" required>
+        </div>
+
+         <div>
+          <label for="age" class="form-label">Age</label>
+            <input type="number" class="form-control" id="age" name="age" min="10" max="60" placeholder="" value="{{age}}" required>
+        </div>
+
+         <div>
+          <label for="youremail" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="youremail" name="youremail" placeholder="" value="{{youremail}}" required>
+        </div>
+
+        <div>
+          <label for="parentsemail" class="form-label">Parents Email</label>
+            <input type="email" class="form-control" id="parentsemail" name="parentsemail" placeholder="" value="{{parentsemail}}" required>
+        </div>
+
+        <div>
+          <label for="aboutme" class="form-label">Tell us about ur netball skills, positions and any other
+              information</label>
+            <textarea class="form-control" id="aboutme" name="aboutme" rows="7"> {{aboutme}}</textarea>
+        </div>
+
+
+        <div class="text-end">
+            <button type="reset" class="btn btn-primary">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
 {% endblock %}
+

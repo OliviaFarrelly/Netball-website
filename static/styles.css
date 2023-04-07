@@ -26,6 +26,7 @@ background-color: var(--bs-background-bg);
     font-weight: bold;
     padding: 0 30px;
     letter-spacing: 1px;
+    font-family: sans-serif;
 }
 
 .hr {
@@ -177,6 +178,61 @@ font-size: 1.3vw;}
 .card-img{filter: blur(2px);
  }
 
+/* Styling for my Form */
+
+label, input[type='text'], input[type='email'], input[type='number'], textarea{
+    font-size: 1.5em !important;
+}
+
+form p{
+    font-size: 1.5em;
+}
+
+table{margin: auto;
+    }
+
+    td{font-size: 1.5em;
+    padding: 0.25em;
+    border-bottom: 1px solid gray;
+    }
+
+   td:first-child{
+       text-align: right;
+       font-weight: bold;
+   }
+
+.confirm_buttons{
+    text-align: center;
+    padding: 10px;
+}
+
+.btn{
+    background-color: var(--bs-nav-bg);
+   border: 2px solid black;
+}
+
+.btn:hover{
+    background-color: rgb(142, 170, 172);
+   border: 2px solid white;
+}
+
+.form-label{font-weight: bold;
+}
+
+.h1confirm{
+    text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+
+.header-text{
+    font-size: 50px;
+    text-align:center;
+font-family: sans-serif;
+margin-top: 2.3em;}
+
+
 /* Styling for my footer */
 footer{
     background-color: var(--bs-nav-bg);
@@ -190,6 +246,7 @@ footer{
     font-size:20px;
     color: rgb(255,255,255)
 }
+
 
 
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -18,9 +18,22 @@ def draws_results():
     return render_template("draws_results.html")
 
 
-@app.route('/register')
+@app.route('/register', methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    if request.method == "POST":
+        f = request.form
+        print(f)
+        return render_template("confirm.html", form_data=f)
+    elif request.method == "GET":
+        temp_form_data = {
+            "firstname": "Daisy",
+            "lastname": "prune",
+            "age": "13",
+            "youremail": "daisyprune@email.com",
+            "parentsemail": "ellaprune@gmail.com",
+            "aboutme": "I have played netball for 3 years and im a GA and GS"
+        }
+        return render_template("register.html", **temp_form_data)
 
 
 if __name__ == "__main__":

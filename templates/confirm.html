@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block logo %}
+static/images/logo.jpg
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container-lg">
+    <h1 class="h1confirm">Your details</h1>
+    <table>
+        <tr><td>First Name</td><td>{{form_data['firstname']}}</td></tr>
+        <tr><td>Last Name</td><td>{{form_data['lastname']}}</td></tr>
+        <tr><td>Age</td><td>{{form_data['age']}}</td></tr>
+        <tr><td>Your Email</td><td>{{form_data['youremail']}}</td></tr>
+        <tr><td>Parents Email</td><td>{{form_data['parentsemail']}}</td></tr>
+        <tr><td>About You</td><td>{{form_data['aboutme']}}</td></tr>
+
+    </table>
+
+    <div class="confirm_buttons">
+        <a href="/" class="btn btn-primary">Cancel</a>
+       <a href="/" class="btn btn-primary">Confirm</a>
+        <a href="{{url_for( 'register',**form_data)}}" class="btn btn-primary">Edit</a>
+    </div>
+</div>
+<br>
+
+<img class="img-fluid" src="static/images/confirm.jpg" alt="confirm">
+
+<br>
+
+
+{% endblock %}
