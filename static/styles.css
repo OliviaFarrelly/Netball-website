@@ -80,6 +80,24 @@ h3{text-align: center;
   padding-left: 5px;
   }
 
+ .dropdown-menu{
+     background-color: var(--bs-nav-bg);
+ }
+
+.dropdown-item{
+    color: rgb(255,255,255);
+    font-size: 1.5em;
+}
+
+ .dropdown-item a:hover{
+     background-color: var(--bs-background-bg);
+
+ }
+
+ .results, .draws{
+     padding: 0;
+ }
+
 /* Styling for my notices */
 .Cancelled {
   background-color: rgb(211, 220, 222);
@@ -128,6 +146,7 @@ h3{text-align: center;
 	max-width: 80em;
 	margin: 2em auto;
 }
+
 /* Columns */
 .bg-white{
     background-color: rgb(255,255,255);
@@ -180,10 +199,11 @@ h3{text-align: center;
 .backing{background-color: white;
 }
 
-.top{margin-top: 7em;
+.top{
 margin-bottom: 5em;}
 
 .labels{font-weight: bold;}
+
 /* Styling for my image overlay */
 .card-text{padding-left: 6em;
 font-size: 1.3vw;
@@ -213,12 +233,13 @@ form p{
 table{margin: auto;
     }
 
-    td{font-size: 1.5em;
+/* Styling for my confirm page table */
+    .confirmtd{font-size: 1.5em;
     padding: 0.25em;
     border-bottom: 1px solid gray;
     }
 
-   td:first-child{
+   .confirmtd:first-child{
        text-align: right;
        font-weight: bold;
    }
@@ -247,12 +268,32 @@ table{margin: auto;
     font-weight: bold;
 }
 
-
 .header-text{
     font-size: 50px;
     text-align:center;
 font-family: sans-serif;
 margin-top: 2.3em;}
+
+/* Styling for my draws & results page table */
+
+.results_table{
+margin: auto;
+text-align: center;}
+
+.draws_table{
+margin: auto;
+text-align: center;}
+
+.td{
+    font-size: 30px;
+    padding-right: 50px;
+
+}
+
+.th{font-size: 30px;
+    padding-right: 50px;}
+
+
 
 
 /* Styling for my footer */
@@ -269,23 +310,5 @@ footer{
     color: rgb(255,255,255)
 }
 
-
-
-@media only screen and (max-width: 768px){
-
-    .body-text, .quote{
-        font-size: 1.5em;
-    }
-    h1{
-        font-size: 2em;
-    }
-}
-
-@media only screen and (max-width: 576px){
-
-    .part-img{
-        max-width: 100%;
-    }
-}
 
 

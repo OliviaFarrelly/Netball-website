@@ -13,9 +13,15 @@ def team():
     return render_template("team.html")
 
 
-@app.route('/draws_results')
-def draws_results():
-    return render_template("draws_results.html")
+@app.route('/draws')
+def draws():
+    return render_template("draws.html")
+
+
+@app.route('/results')
+def results():
+    return render_template("results.html")
+
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -27,7 +33,7 @@ def register():
     elif request.method == "GET":
         temp_form_data = {
             "firstname": "Daisy",
-            "lastname": "prune",
+            "lastname": "Prune",
             "age": "13",
             "youremail": "daisyprune@email.com",
             "parentsemail": "ellaprune@gmail.com",
