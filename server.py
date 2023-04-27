@@ -32,11 +32,11 @@ def register():
         return render_template("confirm.html", form_data=f)
     elif request.method == "GET":
         temp_form_data = {
-            "firstname": "Daisy",
-            "lastname": "Prune",
-            "age": "13",
-            "youremail": "daisyprune@email.com",
-            "parentsemail": "ellaprune@gmail.com",
+            "firstname": "Olivia",
+            "lastname": "Farrelly",
+            "age": "17",
+            "youremail": "olivia.farrelly@marsden.school.nz",
+            "emergencyemail": "nzsamiam@gmail.com",
             "aboutme": "I have played netball for 3 years and im a GA and GS"
         }
         return render_template("register.html", **temp_form_data)
