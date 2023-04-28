@@ -23,7 +23,6 @@ def results():
     return render_template("results.html")
 
 
-
 @app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "POST":
