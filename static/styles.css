@@ -40,6 +40,7 @@ background-color: var(--bs-background-bg);
  }
 
 
+/* Styling for font sizes */
 
 .h2{text-align: center;}
 
@@ -99,9 +100,6 @@ h3{text-align: center;
 
  }
 
- .results, .draws{
-     padding: 0;
- }
 
 /* Styling for my notices */
 .Cancelled {
@@ -172,6 +170,8 @@ h3{text-align: center;
     padding: 0;
     }
 
+
+/* Styles for team page */
 .photos{
         padding-left: 2.3em;
         padding-bottom: 1em;
@@ -225,6 +225,7 @@ font-size: 1.3vw;}
 .border{
     background-color: var(--bs-background-bg);
 }
+
 /* Styling for my Form */
 
 label, input[type='text'], input[type='email'], input[type='number'], textarea{
@@ -280,10 +281,13 @@ table{margin: auto;
 .header-text{
     font-size: 50px;
     text-align:center;
-font-family: sans-serif;
-margin-top: 2.3em;}
+    font-family: sans-serif;
+    margin-top: 2.3em;}
 
 /* Styling for my draws & results page table */
+.results, .draws{
+     padding: 0;
+ }
 
 .results_table{
 margin: auto;
@@ -294,12 +298,12 @@ margin: auto;
 text-align: center;}
 
 .td{
-    font-size: 30px;
+    font-size: 3vw;
     padding-right: 50px;
 
 }
 
-.th{font-size: 30px;
+.th{font-size: 3vw;
     padding-right: 50px;}
 
 
