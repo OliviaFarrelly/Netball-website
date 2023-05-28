@@ -1,11 +1,87 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from db_functions import run_search_query_tuples, run_commit_query
+from datetime import datetime
 
 app = Flask(__name__)
+db_path = 'data/netball_db.sqlite'
+
+
+@app.template_filter()
+def noticedate(sqlite_dt):
+    # create a data object
+    x = datetime.strptime(sqlite_dt, '%Y-%m-%d %H:%M:%S')
+    return x.strftime("%a %d %b %y %I:%M %p")
+
+
+@app.route('/notices_cud', methods=['GET', 'POST'])
+def notices_cud():
+    # collect data from the web address
+    data = request.args
+    required_keys = ['id', 'task']
+    for k in required_keys:
+        if k not in data.keys():
+            message = "Do not know what to do with create read update on notice (key not present)"
+            return render_template('error.html', message=message)
+    # have an id and task key
+    if request.method == "GET":
+        if data['task'] == 'delete':
+            sql = "delete from notices where notices_id = ?"
+            values_tuple = (data['id'],)
+            result = run_commit_query(sql, values_tuple, db_path)
+            return redirect(url_for('index'))
+
+        elif data['task'] == 'update':
+            sql = """select title, content from notices where notices_id = ?"""
+            values_tuple = (data['id'],)
+            result = run_search_query_tuples(sql, values_tuple, db_path, True)
+            result = result[0]
+            return render_template("notices_cud.html",
+                                   **result,
+                                   id=data['id'],
+                                   task=data['task'])
+        elif data['task'] == 'add':
+            temp = {'title': 'Test Title', 'content': 'Test Content'}
+            return render_template("notices_cud.html",
+                                   id=0,
+                                   task=data['task'],
+                                  **temp)
+        else:
+            message = "Unrecognised task coming from notices page"
+            return render_template('error.html', message=message)
+    elif request.method == "POST":
+        # collected form information
+        f = request.form
+        print(f)
+        if data['task'] == 'add':
+            # add the new entry to the database
+            # member is fixed for now
+            sql = """ insert into notices(title, content, noticedate, member_id)
+                            values(?,?, datetime('now', 'localtime'),2) """
+            values_tuple = (f['title'], f['content'])
+            result = run_commit_query(sql, values_tuple, db_path)
+            return redirect(url_for('index'))
+        elif data['task'] == 'update':
+            sql = """ update notices set title=?, content=?, noticedate=datetime('now', 'localtime') where notices_id=?"""
+            values_tuple = (f['title'], f['content'], data['id'])
+            result = run_commit_query(sql, values_tuple, db_path)
+            # collect teh data from the form and update the database at the sent id
+        return redirect(url_for('index'))
+
+    else:
+        return render_template("notices_cud.html")
 
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    # query for the news items for the page
+    sql = """ select notices.notices_id , notices.title, notices.content, notices.noticedate, member.name
+    from notices
+    join member on notices.member_id = member.member_id
+    order by notices.noticedate desc;
+    """
+    result = run_search_query_tuples(sql, (), db_path, True)
+    print(result)
+    return render_template("index.html", notices=result)
 
 
 @app.route('/team')

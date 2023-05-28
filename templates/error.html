@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Error page
+{% endblock %}
+
+{% block logo %}
+static/images/logo.jpg
+{% endblock %}
+
+{% block content %}
+<div class="container-lg py-sm-5 py-1">
+    <h1>Error Page</h1>
+    <h2 class="alert">{{message}}</h2>
+</div>
+{% endblock %}

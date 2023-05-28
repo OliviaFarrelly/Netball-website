@@ -101,6 +101,34 @@ h3{text-align: center;
  }
 
 
+/* Styling for my notices fro databaseno colour gradient*/
+.notices{
+  background-color: rgb(197, 209, 211);
+  border-left: 4px solid rgb(153, 174, 178);
+  padding-left: 5px;}
+
+.notices_meta{text-align: right;}
+
+.btn{
+    background-color: rgb(168, 186, 189);
+   border: 2px solid rgb(139, 163, 167);
+    color: black;
+    font-size: 1em;
+}
+
+.btn:hover{
+    background-color: rgb(211, 220, 222);
+   border: 2px solid rgb(168, 186, 189);
+    color: darkslategray;}
+
+.new{
+    background-color: rgb(197, 209, 211);
+    padding: 8px;
+    border-radius: 25px;
+    border: 2px solid rgb(153, 174, 178);
+
+}
+
 /* Styling for my notices */
 .Cancelled {
   background-color: rgb(211, 220, 222);
@@ -108,6 +136,8 @@ h3{text-align: center;
   padding-left: 5px;
 
 }
+
+.container-sm{max-width: 50%;}
 
 .Congrats {
   background-color: rgb(197, 209, 211);
@@ -259,15 +289,7 @@ table{margin: auto;
     padding: 10px;
 }
 
-.btn{
-    background-color: var(--bs-nav-bg);
-   border: 2px solid black;
-}
 
-.btn:hover{
-    background-color: rgb(142, 170, 172);
-   border: 2px solid white;
-}
 
 .form-label{font-weight: bold;
 }

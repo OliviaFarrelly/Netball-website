@@ -77,44 +77,26 @@ static/images/logo.jpg
             </div>
 
     </div>
-   <div class = "col-sm-5" >
-       <!-- Adding little columns -->
-     <h2 class="h2"><b>Notices</b></h2>
-<div class="Cancelled">
-  <p class="noticesp"><strong>Cancelled!</strong>
-    <br> All netball games played outside are cancelled due to rain</p>
-</div>
+    <div class="col-sm-5">
+          <h2 class="h2"><b>Notices</b></h2>
+        <div class="new">
+       <a href="{{ url_for('notices_cud', id=0, task='add') }}" class="btn-primary btn">New</a>
+            </div>
+        <br>
+    {% for row in notices %}
+        <div class="notices">
+        <p class="noticesp"><strong>{{row['title']}}</strong><br>{{row['content']}}</p>
+        <div class="notices_meta">Posted by {{row['name']}} on {{row['noticedate'] | noticedate }}</div>
+            <div class="notices_meta">
+        <a href="{{ url_for('notices_cud', id=row['notices_id'], task='update') }}" class="btn-primary btn">Update</a>
+        <a href="{{ url_for('notices_cud', id=row['notices_id'], task='delete') }}" class="btn-primary btn">Delete</a>
+                </div>
+        </div>
+        <br>
+    {% endfor %}
+        </div>
 
-    <div class="Congrats">
-  <p class="noticesp"><strong>Congrats!</strong>
- <br>Congratulations to our teams who all won their games </p>
 </div>
-
-<div class="Training">
-  <p class="noticesp"><strong>Training!</strong>
-   <br>Training cancelled on Thursday, due to coach being sick</p>
-</div>
-
-<div class="game">
-  <p class="noticesp"><strong>Draw!</strong>
-    <br>Keep an eye out for the game draw</p>
-</div>
-
-<div class="uniform">
-<p class="noticesp"><strong>Uniform!</strong>
-  <br> Please wear the correct unifrom for games </p>
-</div>
-
-<div class="umpiring">
-<p class="noticesp"><strong>Umpiring!</strong>
-  <br>Dont forget to register for umpiring</p>
-</div>
-   </div>
-   </div>
-
-  <br>
-</div>
-
 <!-- Adding more columns -->
 <div class = "container bg-white">
 <div class = "row">
@@ -176,4 +158,5 @@ static/images/logo.jpg
     </div>
 </div>
 
+</div>
 {% endblock %}
