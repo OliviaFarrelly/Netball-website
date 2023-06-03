@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from db_functions import run_search_query_tuples, run_commit_query
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = "sgdjkdgjdfgkdjfgk"
 db_path = 'data/netball_db.sqlite'
 
 
@@ -27,7 +28,7 @@ def notices_cud():
         if data['task'] == 'delete':
             sql = "delete from notices where notices_id = ?"
             values_tuple = (data['id'],)
-            result = run_commit_query(sql, values_tuple, db_path)
+            run_commit_query(sql, values_tuple, db_path)
             return redirect(url_for('index'))
 
         elif data['task'] == 'update':
@@ -44,7 +45,7 @@ def notices_cud():
             return render_template("notices_cud.html",
                                    id=0,
                                    task=data['task'],
-                                  **temp)
+                                   **temp)
         else:
             message = "Unrecognised task coming from notices page"
             return render_template('error.html', message=message)
@@ -56,12 +57,13 @@ def notices_cud():
             # add the new entry to the database
             # member is fixed for now
             sql = """ insert into notices(title, content, noticedate, member_id)
-                            values(?,?, datetime('now', 'localtime'),2) """
-            values_tuple = (f['title'], f['content'])
-            result = run_commit_query(sql, values_tuple, db_path)
+                            values(?,?, datetime('now', 'localtime'),?) """
+            values_tuple = (f['title'], f['content'], session['member_id'])
+            run_commit_query(sql, values_tuple, db_path)
             return redirect(url_for('index'))
         elif data['task'] == 'update':
-            sql = """ update notices set title=?, content=?, noticedate=datetime('now', 'localtime') where notices_id=?"""
+            sql = """ update notices set title=?, content=?, 
+                        noticedate=datetime('now', 'localtime') where notices_id=?"""
             values_tuple = (f['title'], f['content'], data['id'])
             result = run_commit_query(sql, values_tuple, db_path)
             # collect teh data from the form and update the database at the sent id
@@ -82,6 +84,44 @@ def index():
     result = run_search_query_tuples(sql, (), db_path, True)
     print(result)
     return render_template("index.html", notices=result)
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    print(session)
+    error = "Your credentials are not recognised"
+    if request.method == "GET":
+        return render_template("login.html", email='Dave_coach@g.com', password="temp")
+    elif request.method == "POST":
+        f = request.form
+        sql = """ select member_id, name, password, authorisation from member where email = ? """
+        values_tuple = (f['email'],)
+        result = run_search_query_tuples(sql, values_tuple, db_path, True)
+        if result:
+            # allowed result
+            result = result[0]
+            # check result password from query with the form
+            if result['password'] == f['password']:
+                # start a session
+                session['name'] = result['name']
+                session['authorisation'] = result['authorisation']
+                session['member_id'] = result['member_id']
+                print(session)
+                # match login is allowed go back to home page
+                return redirect(url_for('index'))
+            else:
+                # if there is a problem take it back to the login page
+                return render_template("login.html", email='Dave_coach@g.com', password="temp", error=error)
+
+        else:
+            return render_template("login.html", email='Dave_coach@g.com', password="temp", error=error)
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect (url_for('index'))
+
 
 
 @app.route('/team')

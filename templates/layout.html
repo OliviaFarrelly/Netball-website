@@ -47,11 +47,23 @@
         <li class="nav-item">
           <a class="nav-link" href="/register">Register</a>
         </li>
-      </ul>
-    </div>
-</nav>
+        </ul>
+<span class="navbar-text">
+          {% if session %}
+          <a class="nav-link" href="/logout">Logout</a>
+          {% else %}
+          <a class="nav-link" href="/login">Login</a>
+          {% endif %}
+        </span>
 
-</div>
+
+    </div>
+
+</nav>
+  </div>
+ {%if session%}
+<div class="session">{{session['name']}} is logged in</div>
+  {% endif %}
 
 {% block content %}{% endblock %}
 
@@ -59,7 +71,6 @@
 <footer>
     <h2 class="footerh2"> Copyright © Olivia Farrelly </h2>
   </footer>
-
 </body>
 
 </html>

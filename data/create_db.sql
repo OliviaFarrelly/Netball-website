@@ -21,9 +21,9 @@ create table notices(
 );
 
 insert into member( name, email, password, authorisation)
-values ('Mike', 'm@g.com', 'temp', 0);
+values ('Dave', 'Dave_coach@g.com', 'temp', 0);
 insert into member( name, email, password, authorisation)
-values ('Vannesa', 'v@g.com', 'temp', 0);
+values ('Vanessa', 'Vannessa_coach@g.com', 'temp', 0);
 insert into member( name, email, password, authorisation)
 values ('Olivia', 'o@g.com', 'temp', 1);
 insert into member( name, email, password, authorisation)
@@ -33,14 +33,14 @@ insert into notices(title, content, noticedate, member_id)
 values('Cancelled!',
        'All netball games played outside are cancelled due to rain',
        '2023-03-04 20:30:00',
-       (select member_id from member where name='Mike')
+       (select member_id from member where name='Dave')
 );
 
 insert into notices(title, content, noticedate, member_id)
 values('Congrats!',
        'Congratulations to our teams who all won their games',
        '2023-03-12 17:45:00',
-       (select member_id from member where name='Vannesa')
+       (select member_id from member where name='Vanessa')
 );
 
 
@@ -48,5 +48,5 @@ insert into notices(title, content, noticedate, member_id)
 values('Training!',
        'Training cancelled on Thursday, due to coach being sick',
        '2023-03-14 12:38:00',
-       (select member_id from member where name='Vannesa')
+       (select member_id from member where name='Vanessa')
 );

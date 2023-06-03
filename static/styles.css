@@ -100,8 +100,25 @@ h3{text-align: center;
 
  }
 
+.navbar-text{
+    text-align: right;
+    width: 100%;
+    padding-right: 20px;
+    background-color: var(--bs-nav-bg);
+  }
 
-/* Styling for my notices fro databaseno colour gradient*/
+.alert{ color: red;
+        font-weight: bold;
+    text-align: center;
+    font-size: 20px;}
+
+.session{background-color: var(--bs-nav-bg);
+            color: white;
+            text-align: center;
+            font-size: 2em;}
+
+
+/* Styling for my notices for database no colour gradient*/
 .notices{
   background-color: rgb(197, 209, 211);
   border-left: 4px solid rgb(153, 174, 178);
@@ -327,8 +344,6 @@ text-align: center;}
 
 .th{font-size: 3vw;
     padding-right: 50px;}
-
-
 
 
 /* Styling for my footer */
