@@ -32,94 +32,47 @@ static/images/logo.jpg
   </div>
 
 <div class="container">
+            <div class="notices_meta">
+        <a href="{{ url_for('draws_cud', id=0, task='add') }}" class="btn-primary btn">New Draw</a>
+    </div>
 
+      {% set ns=namespace(gameda="") %}
+{% for row in draws %}
+      {% if row['gamedate'] | gameday != ns.gameda %}
+            {% if not loop.first %}
+            </table>
+
+            {% endif %}
+                <hr>
+                <h3 class="labels">Draws - {{ row['gamedate'] | gameday}} </h3>
+                <hr>
+                <table class="draws_table">
+                <tr>
+                <th class="th" >Time</th>
+                <th class="th">Team 1</th>
+                <th class="th"></th>
+                <th class="th">Team 2</th>
+                <th class="th2"></th>
+                <th class="th2"></th>
+                </tr>
+            {% set ns.gameda = row['gamedate'] | gameday %}
+      {% endif %}
+
+          <tr>
+            <td class="td">{{row['gamedate'] | gametime }}</td>
+            <td class="td">{{row['team1']}}</td>
+            <td class="td">VS</td>
+            <td class="td">{{row['team2']}}</td>
+            <td class="td2"> <a href="{{ url_for('draws_cud', id=row['game_id'], task='update') }}" class="btn-primary btn">Update</a></td>
+            <td class="td2"><a href="{{ url_for('draws_cud', id=row['game_id'], task='delete') }}" class="btn-primary btn">Delete</a></td>
+          </tr>
+
+    {% endfor %}
+      </table>
 <hr>
-<h3 class="labels">Draws - 15/3/23</h3>
-       <hr>
-  <table class="draws_table">
-  <tr>
-    <th class="th" >Time</th>
-    <th class="th">Team 1</th>
-    <th class="th"></th>
-    <th class="th">Team 2</th>
-  </tr>
-  <tr>
-    <td class="td">8:00am</td>
-    <td class="td">Hot Shots 1</td>
-    <td class="td">VS</td>
-    <td class="td">WEGC</td>
-  </tr>
-  <tr>
-   <td class="td">9:30am</td>
-    <td class="td">East 2</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 2</td>
-  </tr>
-    <tr>
-   <td class="td">11:00pm</td>
-    <td class="td">Vic Uni 2</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 3</td>
-  </tr>
-</table>
-<hr>
-<h3 class="labels">Draws - 22/3/23</h3>
-       <hr>
-  <table class="draws_table">
-  <tr>
-    <th class="th" >Time</th>
-    <th class="th">Team 1</th>
-    <th class="th"></th>
-    <th class="th">Team 2</th>
-  </tr>
-  <tr>
-    <td class="td">8:30am</td>
-    <td class="td">Hot Shots 3</td>
-    <td class="td">VS</td>
-    <td class="td">St Marys 2</td>
-  </tr>
-  <tr>
-   <td class="td">12:30pm</td>
-    <td class="td">Vic Uni 1</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 1</td>
-  </tr>
-    <tr>
-   <td class="td">2:00pm</td>
-    <td class="td">WGC</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 2</td>
-  </tr>
-</table>
-<hr>
-    <h3 class="labels">Draws - 29/3/23</h3>
-       <hr>
-  <table class="draws_table">
-  <tr>
-    <th class="th" >Time</th>
-    <th class="th">Team 1</th>
-    <th class="th"></th>
-    <th class="th">Team 2</th>
-  </tr>
-  <tr>
-    <td class="td">9:00am</td>
-    <td class="td">Hot Shots 2</td>
-    <td class="td">VS</td>
-    <td class="td">St Marys</td>
-  </tr>
-  <tr>
-   <td class="td">10:30am</td>
-    <td class="td">Vic Uni</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 3</td>
-  </tr>
-    <tr>
-   <td class="td">12:30pm</td>
-    <td class="td">East</td>
-    <td class="td">VS</td>
-    <td class="td">Hot Shots 1</td>
-  </tr>
-</table>
+
 </div>
+
+
 
 {% endblock %}

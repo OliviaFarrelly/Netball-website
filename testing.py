@@ -1,10 +1,9 @@
 from db_functions import run_search_query_tuples
 
 
-def get_notices(db_path):
-    sql = """ select notices.title, notices.content, member.name
-    from notices
-    join member on notices.member_id = member.member_id;
+def get_game(db_path):
+    sql = """ select game.gamedate, game.location, game.team1, game.score1, game.team2, game.score2 
+    from game
     """
     result = run_search_query_tuples(sql, (), db_path, True)
     for row in result:
@@ -15,4 +14,4 @@ def get_notices(db_path):
 
 if __name__ == "__main__":
     db_path = 'data/netball_db.sqlite'
-    get_notices(db_path)
+    get_game(db_path)

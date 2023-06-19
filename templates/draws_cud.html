@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Draws
+{% endblock %}
+
+{% block logo %}
+static/images/logo.jpg
+{% endblock %}
+
+{% block content %}
+<div class="container-sm py-sm-3 py-3">
+    <br>
+        <h2 class="h2"><u>Please enter/update your Game </u></h2>
+
+<form action="{{ url_for('draws_cud', id=id, task=task) }}"  method="POST">
+    <div>
+            <label for="gamedate" class="form-label"> Date and time of the event:</label>
+            <input id="gamedate"
+                   class="form-control"
+                   type="datetime-local"
+                   name="gamedate"
+                   min="2023-01-01T00:00"
+                   max="2023-12-31T00:00"
+                   value = "{{gamedate}}"
+                   required />
+            <span class="validity"></span>
+      </div>
+       <div>
+           <label for="team1" class="form-label"> Team 1:</label>
+            <select class="form-control" name="team1" id="team1" required>
+                <option value=""> Select your Team </option>
+
+                    <option value="Hot Shots 1">Hot Shots 1</option>
+
+                    <option value="Hot Shots 2">Hot Shots 2</option>
+
+                    <option value="Hot Shots 3">Hot Shots 3</option>
+
+            </select>
+       </div>
+        <div>
+           <label for="team2" class="form-label"> Team 2:</label>
+            <select class="form-control" name="team2" id="team2" required>
+                                <option value=""> Select your Team</option>
+
+                     <option value="Hot Shots 1">Hot Shots 1</option>
+
+                    <option value="Hot Shots 2">Hot Shots 2</option>
+
+                    <option value="Hot Shots 3">Hot Shots 3</option>
+
+                    <option value="Hot Shots 3">Marsden</option>
+
+                    <option value="WEGC 2">WEGC</option>
+
+                    <option value="East">East</option>
+
+                    <option value="East 2">East 2</option>
+
+                    <option value="Vic Uni 1">Vic Uni 1</option>
+
+                    <option value="Vic Uni 2">Vic Uni 2</option>
+
+                    <option value="WGC">WGC</option>
+
+                    <option value="St Marys 1">St Marys 1</option>
+
+                    <option value="St Marys 2">St Marys 2</option>
+
+                    <option value="Onslow">Onslow</option>
+
+                    <option value="Scots">Scots</option>
+
+                    <option value="Ories">Ories</option>
+
+                    <option value="Newlands">Newlands</option>
+            </select>
+        </div>
+
+    <div class="text-end mb-2">
+        <button type="reset" class="btn btn-primary">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+</div>
+
+
+{% endblock %}

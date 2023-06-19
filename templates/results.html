@@ -30,8 +30,18 @@ static/images/logo.jpg
   </div>
 
 <div class="container">
+    <div class="notices_meta">
+        <a href="{{ url_for('results_cud', id=0, task='add') }}" class="btn-primary btn">New Result</a>
+    </div>
+
+     {% set ns=namespace(resultda="") %}
+{% for row in results %}
+      {% if row['resultdate'] | resultdate != ns.resultda %}
+            {% if not loop.first %}
+            </table>
+      {% endif %}
     <hr>
-<h3 class="labels">Results - 8/3/23</h3>
+<h3 class="labels">Results - {{ row['resultdate'] | resultdate }}</h3>
        <hr>
     <table class="results_table">
   <tr>
@@ -40,85 +50,21 @@ static/images/logo.jpg
     <th class="th" style="width:20%"></th>
     <th class="th" style="width:30%">Team 2</th>
   </tr>
-  <tr>
-    <td class="td">Hot Shots 2</td>
-    <td class="td">48</td>
-    <td class="td">40</td>
-    <td class="td">St Marys</td>
-  </tr>
-  <tr>
-   <td class="td">Vic Uni</td>
-    <td class="td">30</td>
-    <td class="td">31</td>
-    <td class="td">Hot Shots 3</td>
-  </tr>
-    <tr>
-   <td class="td">East</td>
-    <td class="td">26</td>
-    <td class="td">48</td>
-    <td class="td">Hot Shots 1</td>
-  </tr>
+         {% set ns.resultda = row['resultdate'] | resultdate %}
+        {% endif %}
+
+         <tr>
+            <td class="td">{{row['team1']}}</td>
+            <td class="td">{{row['score1']}}</td>
+            <td class="td">{{row['score2']}}</td>
+            <td class="td">{{row['team2']}}</td>
+            <td class="td2"> <a href="{{ url_for('results_cud', id=row['result_id'], task='update') }}" class="btn-primary btn">Update</a></td>
+            <td class="td2"><a href="{{ url_for('results_cud', id=row['result_id'], task='delete') }}" class="btn-primary btn">Delete</a></td>
+          </tr>
+ {% endfor %}
 </table>
 
      <hr>
-<h3 class="labels">Results - 1/3/23</h3>
-       <hr>
-    <table class="results_table">
-  <tr>
-    <th class="th" style="width:30%">Team 1</th>
-    <th class="th" style="width:20%"></th>
-    <th class="th" style="width:20%"></th>
-    <th class="th" style="width:30%">Team 2</th>
-  </tr>
-  <tr>
-    <td class="td">Hot Shots 2</td>
-    <td class="td">28</td>
-    <td class="td">30</td>
-    <td class="td">WEGC 2</td>
-  </tr>
-  <tr>
-   <td class="td">Onslow</td>
-    <td class="td">10</td>
-    <td class="td">25</td>
-    <td class="td">Hot Shots 3</td>
-  </tr>
-    <tr>
-   <td class="td">Scots</td>
-    <td class="td">28</td>
-    <td class="td">39</td>
-    <td class="td">Hot Shots 1</td>
-  </tr>
-</table>
-
-     <hr>
-<h3 class="labels">Results - 25/2/23</h3>
-       <hr>
-    <table class="results_table">
-  <tr>
-    <th class="th" style="width:30%">Team 1</th>
-    <th class="th" style="width:20%"></th>
-    <th class="th" style="width:20%"></th>
-    <th class="th" style="width:30%">Team 2</th>
-  </tr>
-  <tr>
-    <td class="td">Hot Shots 1</td>
-    <td class="td">13</td>
-    <td class="td">28</td>
-    <td class="td">SMOG</td>
-  </tr>
-  <tr>
-   <td class="td">Ories 2</td>
-    <td class="td">39</td>
-    <td class="td">40</td>
-    <td class="td">Hot Shots 2</td>
-  </tr>
-    <tr>
-   <td class="td">Newlands 3</td>
-    <td class="td">15</td>
-    <td class="td">23</td>
-    <td class="td">Hot Shots 3</td>
-  </tr>
-</table>
 </div>
 
 {% endblock %}

@@ -50,6 +50,13 @@ h3{text-align: center;
     padding-top: 5px;
 }
 
+h4{
+    text-align: center;
+    padding-bottom: 1px;
+    padding-top: 25px;
+    font-family: sans-serif;
+
+}
 .subheading{
     text-align: center;
     background-color: rgb(255,255,255);
@@ -344,6 +351,15 @@ text-align: center;}
 
 .th{font-size: 3vw;
     padding-right: 50px;}
+
+.td2{
+    font-size: 1vw;
+
+
+}
+
+.th2{font-size: 1vw;
+    }
 
 
 /* Styling for my footer */
