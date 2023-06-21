@@ -195,14 +195,16 @@ def draws_cud():
         f = request.form
         print(f)
         if data['task'] == 'add':
-            sql = """insert into game(gamedate,team1,team2,location)"""
+            sql = """insert into game(gamedate,team1,team2,location)
+            values(?,?,?,?)"""
             g_date = f['gamedate'].replace("T", " ")+":00"
             values_tuple = (g_date, f['team1'], f['team2'], "ASB")
             result = run_commit_query(sql, values_tuple, db_path)
             return redirect(url_for('draws'))
         elif data['task'] == 'update':
-            sql = """ update game set gamedate=?, team1=?, team2=?, """
-            values_tuple = (f['gamedate'], f['team1'], f['team2'], data['id'])
+            sql = """ update game set gamedate=?, team1=?, team2=? where game_id = ? """
+            g_date = f['gamedate'].replace("T", " ") + ":00"
+            values_tuple = (g_date, f['team1'], f['team2'], data['id'])
             result = run_commit_query(sql, values_tuple, db_path)
             # collect teh data from the form and update the database at the sent id
         return redirect(url_for('draws'))
@@ -212,10 +214,10 @@ def draws_cud():
 
 @app.route('/results')
 def results():
-    sql = """ select results.result_id , results.resultdate, results.team1, 
-                results.score1, results.team2, results.score2
-           from results
-           order by results.resultdate DESC 
+    sql = """ select game.game_id , game.gamedate, game.team1, 
+                game.score1, game.team2, game.score2
+           from game
+           order by game.gamedate DESC 
            """
     result = run_search_query_tuples(sql, (), db_path, True)
     print(result)
@@ -233,40 +235,37 @@ def results_cud():
             return render_template('error.html', message=message)
     if request.method == "GET":
         if data['task'] == 'delete':
-            sql = "delete from results where result_id = ?"
+            sql = "delete from game where game_id = ?"
             values_tuple = (data['id'],)
             run_commit_query(sql, values_tuple, db_path)
             return redirect(url_for('results'))
         elif data['task'] == 'update':
-            sql = "select resultdate, team1, score1, team2, score2 from results where result_id =?"
+            sql = "select gamedate, team1, score1, team2, score2 from game where game_id =?"
             values_tuple = (data['id'],)
             result = run_search_query_tuples(sql, values_tuple, db_path, True)
             result = result[0]
             return render_template("results_cud.html",
-                                   resultdate=result['resultdate'],
+                                   gamedate=result['gamedate'].replace(" ", "T"),
                                    team1=result['team1'],
                                    score1=result['score1'],
                                    team2=result['team2'],
                                    score2=result['score2'],
                                    id=data['id'],
                                    task=data['task'])
-        elif data['task'] == 'add':
-            return render_template("results_cud.html", id=0, task='add')
+
         else:
             message = "unrecognised task"
             return render_template('error.html', message=message)
     elif request.method == "POST":
         f = request.form
         print(f)
-        if data['task'] == 'add':
-            sql = """insert into results(resultdate,team1,score1,team2,score2)"""
-            values_tuple = (f['resultdate'], f['team1'], f['score1'], f['team2'], f['score2'])
+        if data['task'] == 'update':
+            print("updating")
+            sql = """ update game set gamedate=?, team1=?, score1=?, team2=?, score2=? where game_id=?"""
+            g_date = f['gamedate'].replace("T", " ") + ":00"
+            values_tuple = (g_date, f['team1'], f['score1'], f['team2'], f['score2'], data['id'])
             result = run_commit_query(sql, values_tuple, db_path)
-            return redirect(url_for('results'))
-        elif data['task'] == 'update':
-            sql = """ update results set resultdate=?, team1=?, score1=?, team2=?, score2=? """
-            values_tuple = (f['resultdate'], f['team1'], f['score1'], f['team2'], f['score2'], data['id'])
-            result = run_commit_query(sql, values_tuple, db_path)
+            print(result)
             # collect teh data from the form and update the database at the sent id
         return redirect(url_for('results'))
     else:

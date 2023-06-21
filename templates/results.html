@@ -30,18 +30,15 @@ static/images/logo.jpg
   </div>
 
 <div class="container">
-    <div class="notices_meta">
-        <a href="{{ url_for('results_cud', id=0, task='add') }}" class="btn-primary btn">New Result</a>
-    </div>
 
-     {% set ns=namespace(resultda="") %}
+     {% set ns=namespace(gameda="") %}
 {% for row in results %}
-      {% if row['resultdate'] | resultdate != ns.resultda %}
+      {% if row['gamedate'] | gameday != ns.gameda %}
             {% if not loop.first %}
             </table>
       {% endif %}
     <hr>
-<h3 class="labels">Results - {{ row['resultdate'] | resultdate }}</h3>
+<h3 class="labels">Results - {{ row['gamedate'] | gameday }}</h3>
        <hr>
     <table class="results_table">
   <tr>
@@ -50,7 +47,7 @@ static/images/logo.jpg
     <th class="th" style="width:20%"></th>
     <th class="th" style="width:30%">Team 2</th>
   </tr>
-         {% set ns.resultda = row['resultdate'] | resultdate %}
+         {% set ns.gameda = row['gamedate'] | gameday %}
         {% endif %}
 
          <tr>
@@ -58,9 +55,12 @@ static/images/logo.jpg
             <td class="td">{{row['score1']}}</td>
             <td class="td">{{row['score2']}}</td>
             <td class="td">{{row['team2']}}</td>
-            <td class="td2"> <a href="{{ url_for('results_cud', id=row['result_id'], task='update') }}" class="btn-primary btn">Update</a></td>
-            <td class="td2"><a href="{{ url_for('results_cud', id=row['result_id'], task='delete') }}" class="btn-primary btn">Delete</a></td>
-          </tr>
+              {% if session and session['authorisation'] == 0 %}
+            <td class="td2"> <a href="{{ url_for('results_cud', id=row['game_id'], task='update') }}" class="btn-primary btn">Update</a></td>
+            <td class="td2"><a href="{{ url_for('results_cud', id=row['game_id'], task='delete') }}" class="btn-primary btn">Delete</a></td>
+                {% endif %}
+
+         </tr>
  {% endfor %}
 </table>
 

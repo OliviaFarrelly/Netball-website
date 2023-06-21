@@ -50,7 +50,7 @@ static/images/logo.jpg
 
                     <option value="Hot Shots 3">Hot Shots 3</option>
 
-                    <option value="Hot Shots 3">Marsden</option>
+                    <option value="Marsden">Marsden</option>
 
                     <option value="WEGC 2">WEGC</option>
 
@@ -83,6 +83,12 @@ static/images/logo.jpg
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+    <script>
+        let x= document.querySelector('#team1')
+        x.value = "{{ team1 }}"
+        let y = document.querySelector('#team2')
+        y.value = "{{ team2 }}"
+    </script>
 
 </div>
 

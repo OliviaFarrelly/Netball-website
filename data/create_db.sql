@@ -4,7 +4,7 @@ drop table if exists notices;
 drop table if exists member;
 drop table if exists team;
 drop table if exists game;
-drop table if exists results;
+
 
 
 create table member(
@@ -33,17 +33,12 @@ create table game(
      gamedate date not null,
      location text not null,
      team1 text not null ,
-     team2 text not null
-);
-
-create table results(
-     result_id integer primary key autoincrement not null,
-     resultdate date not null,
-     team1 text not null ,
      score1 integer,
      team2 text not null,
      score2 integer
 );
+
+
 
 insert into member( name, email, password, authorisation)
 values ('Dave', 'Dave_coach@g.com', 'temp', 0);
@@ -131,25 +126,13 @@ insert into game( gamedate, location, team1, team2)
 values ('2023-03-22 12:25:00', 'ASB', 'Hot Shots 2', 'St Marys 1' );
 
 
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-08', 'Hot Shots 3','31', 'Marsden','16' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-08', 'Newlands','48', 'Hot Shots 1','52' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-08', 'Hot Shots 2','12', 'St Marys 2','24' );
+insert into game( gamedate,location, team1, score1, team2, score2)
+values ('2023-03-08 08:00:00','ASB', 'Hot Shots 3','31', 'Marsden','16' );
+insert into game( gamedate,location, team1, score1, team2, score2)
+values ('2023-03-08 10:10:00','ASB', 'Newlands','48', 'Hot Shots 1','52' );
+insert into game( gamedate,location, team1, score1, team2, score2)
+values ('2023-03-08 12:25:00', 'ASB','Hot Shots 2','12', 'St Marys 2','24' );
 
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-01', 'Hot Shots 1','24', 'WEGC','24' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-01', 'Scots','57', 'Hot Shots 3','58' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-03-01', 'Hot Shots 2','12', 'Vic Uni 1','18' );
 
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-02-22', 'Hot Shots 2','24', 'WGC','24' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-02-22', 'Onslow','57', 'Hot Shots 2','58' );
-insert into results( resultdate, team1, score1, team2, score2)
-values ('2023-02-22', 'Hot Shots 1','12', 'Vic Uni 2','18' );
 
 
